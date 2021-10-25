@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox layout</title>
+    <style>
+      body {
+        font-family: Helvetica;
+      }
+
+      /* First of all, prepare to have your head spin a bit today 😵‍💫. And have mercy for yourself in understanding these things immediately. This showcase is meant to give you a glimpse into what's possible, as well as the rationale behind it. 
+      
+      It surely is one of the most powerful yet confusing techniques we have in the frontend world. */
+      .container {
+        /* 1. Activate flexbox for our single <section> element. Notice how the columns jump onto the same row and have the same height. 
+          
+        We've basically already achieved something that is impossible with floats 😂
+          
+        Right now we can understand the whole <section> as a flex container which renders its children on a single row. */
+        /* display: flex; */
+      }
+
+      /* After we activated flexbox on our <section>, our immediate children <div> elements became flex-children */
+      .child {
+        background: #0074d9;
+        border: 1px solid #001f3f;
+        color: white;
+        padding: 20px;
+
+        /* The following values are the browser default values for flex children (meaning that if you do nothing this is what happens):
+
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto; 
+
+        Let's go over them one by one to see how they function in the context of Flexbox. 
+
+        - 'flex-grow': By default, children don't "stretch" or "grow" on the main axis (currently our single row). This is determined by 'flex-grow' being 0. This means that they are meant to grow based on the content it contains, rather than the remaining/available space of the flex-container. This can be noted by the middle column being wider than the other two.
+        
+        - 'flex-shrink': By default, children are allowed to shrink inside of the flex-container. This is determined by 'flex-shrink' being 1. Shrinking is a feature of flexbox that happens when flex-children are too big to fit inside of their flex-container (because of too much content perhaps). When elements shrink, the content will naturally make the element take expand its height.
+
+        - 'flex-basis': By default, the flex items will aim to be as big as the content it is holding inside. This is what 'auto' means here. Note that this is only happening for left-to-right (because its our main axis), and not top-to-bottom. It can be viewed as the "ideal size" that the element "aims to achieve". Ideal size is "assuming there is neither any extra space, nor any shortages of space".
+
+        Enough theory. Let's experiment!
+
+        1. Let's say we wanted to have all of the columns take up equal amounts of space within our row, how would that be done? Since one of our columns is way wider (the middle column contains more words) than the other two, we need to change something in order to allow for them to grow/shrink to fit the container in an expected way.
+
+        Activate grow/shrink/basis to 1/1/0.
+        */
+        /* flex-grow: 1; */
+        /* flex-shrink: 1; */
+        /* flex-basis: 0; */
+
+        /* This can also be done by setting the short-hand property of 'flex' to 1. */
+        /* flex: 1; */
+      }
+
+      .container {
+        /* 2. Let's say we wanted to center all of the columns vertically along the cross axis (our three columns). How would this be done? 
+        
+        Activate align-items on the flex-container. Notice how the height of the columns now differ. This is because we have changed the default value of 'stretch' for this property.
+        */
+        /* align-items: center; */
+
+        /* 3. We could also set this property to start, to have an uneven height. The height would then be based on the content itself. Add some content to see the column expand downwards.  */
+        /* align-items: end; */
+
+        /* 4. We could even set this property to end, to have the opposite effect of start. The columns will now expand its height upwards towards the upper edge of the flex-container.  */
+        /* align-items: start; */
+      }
+
+      .child {
+        /* 5. Make the children small by turning off the grow/shrink and by setting a hard flex-basis. Notice how there's now space left in the flex-container. */
+        /* flex-grow: 0; */
+        /* flex-shrink: 0; */
+        /* flex-basis: 100px; */
+      }
+
+      .container {
+        /* 6. Since there's room left within our container, we can now position all of the flex-children not only vertically (as we did with align-items), but also horizontally. Activate this. */
+        /* justify-content: center; */
+
+        /* 7. We've spoken about the fact that flexbox lays out flex-children based on its "main axis", which by default is row. This can actually be changed by activating what's called flex-direction. Set this to column. */
+        /* flex-direction: column; */
+
+        /* 8. Setting this essentially reverses 'align-items' and 'justify-content'. This can take a while to get used to. This is because the "cross axis" (default column) becomes the "main axis" (default row). Activate align-items now and see what happens. */
+        /* align-items: center; */
+      }
+
+      /* This probably gives you an idea of how insanely confusing and yet very powerful and enabling of a technique for layouts flexbox is. There's much more to dive into, but these properties are for sure amongst the most frequently used, and more than enough for us at this point in time.  */
+    </style>
+  </head>
+  <body>
+    <h1>Flexbox layout</h1>
+    <section class="container">
+      <div class="child" contenteditable>Column</div>
+      <div class="child" contenteditable>
+        Column with much more content than the others. Lorem ipsum dolor sit
+        amet consectetur adipisicing elit. Neque consequatur ea explicabo
+        laudantium nam ratione sit, blanditiis impedit quo natus.
+      </div>
+      <div class="child" contenteditable>Column</div>
+    </section>
+  </body>
+</html>
