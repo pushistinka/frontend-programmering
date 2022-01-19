@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codealong</title>
+    <style>
+      .map-loaded {
+        height: 400px;
+        width: 100%;
+      }
+
+      footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      .error-message {
+        color: white;
+        background: rgb(225, 73, 73);
+        padding: 1em;
+        margin: 0;
+        border-top: 1px solid gray;
+      }
+    </style>
+    <!-- Load script #1 ASYNCHRONOUSLY -->
+    <!-- Load script #2 ASYNCHRONOUSLY -->
+    <!-- Render the awesome HTML to the user :)))) -->
+    <!-- When BOTH scripts are ready to be run: RUN THEM IN SEQUENCE (first script #1, then script #2) -->
+    <script
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzn6x8l5LwxutxJxnlpjjYqCvPiCgOnPw"
+    ></script>
+    <script src="script.js" defer>
+      /* In the codealong of today we will continue to familiarise ourselves with
+        open web services.
+
+        We will be using TWO different web services today:
+
+        - The Covid 19 Data API found at https://rapidapi.com/Gramzivi/api/covid-19-data/
+        - The google maps API found at https://developers.google.com/maps/documentation/javascript/adding-a-google-map
+
+        The idea is that we will:
+        - Build a search which will retrieve Covid data by Country name.
+        - The google maps API will help us to render a map
+        - We will display a map with a marker related to the location we retrieved from the Covid Data API, as well as information
+        related to Covid for that region (active, confirmed, deaths etc).
+        - Every time we search we might be able to scroll/pan/zoom the map that we created, to the new location.
+
+        In order to use these services we need to have created an API key. One for each API.
+
+        I will do that in the beginning of this codealong, so that we won't get stuck.
+
+        I have used neither of these web services before, so it should be interesting to see what we'll be able
+        to build together :) */
+
+      /* Steps to build:
+
+      1. Rewrite fetch usage to async/await
+      2. Create dropdown with countries populated
+      3. Fetch data based on the option chosen
+      4. Render "confirmed", "deaths" and "recovered" */
+    </script>
+  </head>
+  <body>
+    <select>
+      <option selected disabled>-- Please choose a country --</option>
+      <option value="sweden">Sweden</option>
+      <option value="italy">Italy</option>
+      <option value="norway">Norway</option>
+    </select>
+    <table>
+      <thead>
+        <tr>
+          <th>Confirmed</th>
+          <th>Deaths</th>
+          <th>Recovered</th>
+          <th>Critical</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="confirmed"></td>
+          <td class="deaths"></td>
+          <td class="recovered"></td>
+          <td class="critical"></td>
+        </tr>
+      </tbody>
+    </table>
+    <section id="map"></section>
+    <footer></footer>
+  </body>
+</html>
